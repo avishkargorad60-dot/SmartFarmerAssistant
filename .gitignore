@@ -1,0 +1,5 @@
+.env
+__pycache__/
+*.pyc
+SmartFarmer_Claude.zip
+soil_savedmodel_tmp_fixed/

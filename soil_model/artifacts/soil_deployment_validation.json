@@ -1,0 +1,30 @@
+{
+  "onnx_path": "C:\\SmartFarmerAssistant\\agents\\soil_agent\\model.onnx",
+  "onnx_size_bytes": 8957947,
+  "onnx_input": [
+    [
+      "input",
+      [
+        "unk__654",
+        224,
+        224,
+        3
+      ],
+      "tensor(float)"
+    ]
+  ],
+  "onnx_output": [
+    [
+      "Identity:0",
+      [
+        "unk__655",
+        7
+      ],
+      "tensor(float)"
+    ]
+  ],
+  "onnx_checker": "passed",
+  "keras_onnx_images_compared": 15,
+  "max_probability_difference": 6.794929504394531e-06,
+  "backup": "C:\\SmartFarmerAssistant\\agents\\soil_agent\\model.pre_improvement.onnx"
+}

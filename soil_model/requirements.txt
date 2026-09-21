@@ -1,0 +1,6 @@
+tensorflow
+numpy
+pillow
+onnx
+onnxruntime
+tf2onnx

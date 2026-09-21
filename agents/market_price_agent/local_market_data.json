@@ -1,0 +1,42 @@
+[
+  {
+    "commodity": "Maize",
+    "state": "Karnataka",
+    "district": "Mandya",
+    "market": "Mandya APM",
+    "date": "2026-07-01",
+    "min_price": 1200,
+    "max_price": 1400,
+    "modal_price": 1300
+  },
+  {
+    "commodity": "Wheat",
+    "state": "Punjab",
+    "district": "Amritsar",
+    "market": "Amritsar MKT",
+    "date": "2026-07-02",
+    "min_price": 1800,
+    "max_price": 2000,
+    "modal_price": 1900
+  },
+  {
+    "commodity": "Rice",
+    "state": "West Bengal",
+    "district": "Burdwan",
+    "market": "Burdwan Market",
+    "date": "2026-07-03",
+    "min_price": 1500,
+    "max_price": 1700,
+    "modal_price": 1600
+  },
+  {
+    "commodity": "Maize",
+    "state": "Maharashtra",
+    "district": "Pune",
+    "market": "Pune APM",
+    "date": "2026-07-04",
+    "min_price": 1150,
+    "max_price": 1350,
+    "modal_price": 1250
+  }
+]
