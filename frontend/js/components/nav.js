@@ -5,11 +5,11 @@ import { store } from "../store.js";
 import { toast } from "./ui.js";
 
 const NAV_ITEMS = [
-  { path: "/", label: "Home", icon: icons.home },
-  { path: "/assistant", label: "Assistant", icon: icons.chat },
+  { path: "/", label: "Dashboard", icon: icons.home },
+  { path: "/assistant", label: "AI Assistant", icon: icons.chat },
   { path: "/soil", label: "Soil", icon: icons.seed },
   { path: "/disease", label: "Disease", icon: icons.bug },
-  { path: "/recommend", label: "Crop Advisor", icon: icons.sprout },
+  { path: "/recommend", label: "Farming Knowledge", icon: icons.sprout },
   { path: "/market", label: "Market", icon: icons.coin },
   { path: "/weather", label: "Weather", icon: icons.cloud },
 ];
@@ -170,4 +170,3 @@ function mountStatusBadge() {
       .catch(() => render("offline"));
   });
 }
-

@@ -62,7 +62,7 @@ async function request(path, { method = "GET", body = null, isForm = false, head
   } catch (err) {
     if (err instanceof ApiError) throw err;
     throw new ApiError("Network error", {
-      friendly: "We couldn't reach the Smart Farmer server. Please check your internet connection and that the backend is running.",
+      friendly: "We couldn't reach AgriSense AI. Please check your internet connection and that the backend is running.",
     });
   }
 

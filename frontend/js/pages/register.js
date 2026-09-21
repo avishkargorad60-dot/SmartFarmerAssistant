@@ -15,13 +15,13 @@ export async function render(container) {
               <path d="M12 21v-8" /><path d="M12 13c0-4 3-6 7-6 0 4-3 7-7 7" /><path d="M12 13c0-3-2.5-5-5.5-5C6 11 8.5 13.5 12 13.5" />
             </svg>
           </span>
-          <h1>Smart Farmer Assistant</h1>
+          <div><h1>AgriSense AI</h1><p class="auth-brand__tagline">Intelligent Multi-Agent Farming Assistant</p></div>
         </div>
 
         <div class="auth-card">
           <div class="auth-card__head">
             <h2>Create your account</h2>
-            <p>Join Smart Farmer Assistant to access soil analysis, disease detection, market prices, crop recommendations, and weather guidance.</p>
+            <p>Join AgriSense AI for clear soil, crop health, weather and market intelligence in one place.</p>
           </div>
 
           <form id="register-form" class="stack-form auth-form">

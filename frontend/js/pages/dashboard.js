@@ -7,10 +7,12 @@ import { navigate } from "../router.js";
 import { tipOfTheDay } from "../content.js";
 
 const QUICK_ACTIONS = [
+  { path: "/weather", icon: icons.cloud, title: "Weather", desc: "Plan fieldwork with a local farming outlook." },
   { path: "/soil", icon: icons.seed, title: "Soil Analysis", desc: "Photograph your soil to identify its type." },
-  { path: "/recommend", icon: icons.sprout, title: "Crop Recommendation", desc: "Get crops ranked for your conditions." },
   { path: "/disease", icon: icons.bug, title: "Disease Detection", desc: "Check a crop or leaf photo for problems." },
+  { path: "/recommend", icon: icons.sprout, title: "Farming Knowledge", desc: "Find crop choices for your field conditions." },
   { path: "/market", icon: icons.coin, title: "Market Prices", desc: "See what your crop is selling for nearby." },
+  { path: "/assistant", icon: icons.chat, title: "AI Assistant", desc: "Bring your farm data together in one report." },
 ];
 
 function timeAgo(ts) {
@@ -30,8 +32,8 @@ export async function render(container) {
   container.innerHTML = `
     <section class="hero">
       <div class="hero__text">
-        <p class="eyebrow">${icons.sprout} Smart Farmer Assistant</p>
-        <h1>Good to see you back on the field.</h1>
+        <p class="eyebrow">${icons.sprout} Intelligent Multi-Agent Farming Assistant</p>
+        <h1>Welcome to AgriSense AI.</h1>
         <p class="hero__sub">Upload a photo or share your conditions — get soil, weather, disease and market guidance built for real farming decisions.</p>
         <form id="location-form" class="location-form">
           <label for="location-input" class="sr-only">Your location</label>
@@ -66,7 +68,7 @@ export async function render(container) {
       <a href="#/assistant" class="cta-banner">
         <span>${icons.chat}</span>
         <span>
-          <strong>Combined Farmer Assistant</strong>
+          <strong>Run an AgriSense farm analysis</strong>
           <small>One form. Soil, weather, disease, crops and market prices together.</small>
         </span>
         <span class="cta-banner__arrow">${icons.arrowRight}</span>

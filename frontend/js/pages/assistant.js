@@ -18,15 +18,39 @@ const SECTIONS = [
   { key: "market", title: "Market Prices", icon: icons.coin, render: renderMarketSection },
 ];
 
+const WORKFLOW = [
+  { label: "Weather", icon: icons.cloud },
+  { label: "Soil analysis", icon: icons.seed },
+  { label: "Disease detection", icon: icons.bug },
+  { label: "Farming knowledge", icon: icons.sprout },
+  { label: "Market price", icon: icons.coin },
+  { label: "AI recommendation", icon: icons.chat },
+];
+
+function workflowMarkup() {
+  return `<section class="agent-workflow" aria-label="AgriSense AI workflow"><div class="agent-workflow__head"><div><p class="eyebrow">Multi-agent workflow</p><h2>How AgriSense AI builds your report</h2></div><span class="workflow-status" id="workflow-status">Ready</span></div><div class="workflow-steps">${WORKFLOW.map((step, index) => `<div class="workflow-step" data-workflow-step="${index}"><span class="workflow-step__icon">${step.icon}</span><span>${step.label}</span><i aria-hidden="true"></i></div>`).join("")}</div></section>`;
+}
+
+function setWorkflowState(container, activeIndex = -1, completed = false) {
+  container.querySelectorAll("[data-workflow-step]").forEach((node, index) => {
+    node.classList.toggle("is-active", index === activeIndex && !completed);
+    node.classList.toggle("is-complete", completed || activeIndex > index);
+  });
+  const status = container.querySelector("#workflow-status");
+  if (status) status.textContent = completed ? "Analysis complete" : activeIndex < 0 ? "Ready" : `Processing ${WORKFLOW[activeIndex].label}`;
+}
+
 export async function render(container) {
   const savedLocation = store.getLocation();
 
   container.innerHTML = `
     <section class="page-head">
-      <p class="eyebrow">${icons.chat} Farmer Assistant</p>
-      <h1>Get the full picture in one go</h1>
+      <p class="eyebrow">${icons.chat} AgriSense AI assistant</p>
+      <h1>Get a connected view of your farm</h1>
       <p class="page-head__sub">Fill in what you can — photos are optional. We'll bring together soil, weather, disease, crop and market guidance in one place.</p>
     </section>
+
+    ${workflowMarkup()}
 
     <section class="panel panel--form">
       <form id="assistant-form" class="stack-form">
@@ -91,6 +115,8 @@ export async function render(container) {
   const resultPanel = container.querySelector("#result-panel");
   const resultHost = container.querySelector("#result-host");
   const submitBtn = container.querySelector("#submit-btn");
+  let workflowTimer;
+  let workflowSucceeded = false;
 
   async function submit() {
     const location = container.querySelector("#location").value.trim();
@@ -104,6 +130,13 @@ export async function render(container) {
     resultHost.innerHTML = skeleton({ lines: 6 });
     submitBtn.disabled = true;
     submitBtn.classList.add("is-loading");
+    workflowSucceeded = false;
+    let activeStep = 0;
+    setWorkflowState(container, activeStep);
+    workflowTimer = window.setInterval(() => {
+      activeStep = Math.min(activeStep + 1, WORKFLOW.length - 1);
+      setWorkflowState(container, activeStep);
+    }, 850);
 
     try {
       const result = await api.farmerAssistant({
@@ -125,7 +158,8 @@ export async function render(container) {
         )
         .join("")}</div>`;
 
-      store.addHistory({ type: "assistant", title: "Farmer Assistant", summary: `Full report for ${location}` });
+      workflowSucceeded = true;
+      store.addHistory({ type: "assistant", title: "AgriSense AI Analysis", summary: `Full report for ${location}` });
       toast("Your farm report is ready.", { kind: "success" });
     } catch (err) {
       resultHost.innerHTML = statePanel({
@@ -139,6 +173,9 @@ export async function render(container) {
       resultHost.querySelector("#retry-assistant").addEventListener("click", submit);
       toast("Something went wrong. Please try again.", { kind: "error" });
     } finally {
+      window.clearInterval(workflowTimer);
+      setWorkflowState(container, -1, workflowSucceeded);
+      if (!workflowSucceeded) container.querySelector("#workflow-status").textContent = "Analysis needs attention";
       submitBtn.disabled = false;
       submitBtn.classList.remove("is-loading");
     }

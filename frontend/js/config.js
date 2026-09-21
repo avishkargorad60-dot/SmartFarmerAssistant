@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Smart Farmer Assistant — runtime configuration
+// AgriSense AI — runtime configuration
 //
 // Change API_BASE_URL to point the frontend at your Flask backend.
 // It can also be overridden without editing code by setting, in the
@@ -12,5 +12,5 @@ export const CONFIG = {
   // current origin. Opening the HTML directly still targets local Flask.
   API_BASE_URL: window.__SFA_API_BASE__ || (window.location.protocol === "file:" ? "http://localhost:5000" : ""),
   REQUEST_TIMEOUT_MS: 30000,
-  APP_NAME: "Smart Farmer Assistant",
+  APP_NAME: "AgriSense AI",
 };
