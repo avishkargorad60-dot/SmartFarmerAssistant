@@ -2,4 +2,32 @@
 __pycache__/
 *.pyc
 SmartFarmer_Claude.zip
+soil_savedmodel_tmp_fixed/# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+*/venv/
+*/.venv/
+
+# Datasets / downloaded archives
+dataset_download/
+*.zip
+
+# Logs
+*.log
+
+# Environment secrets
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary/model export files
+*.tmp
+
 soil_savedmodel_tmp_fixed/
