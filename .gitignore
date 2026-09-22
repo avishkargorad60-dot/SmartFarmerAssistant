@@ -31,3 +31,5 @@ dataset_download/
 *.tmp
 
 soil_savedmodel_tmp_fixed/
+
+soil_model/CyAUG-Dataset/
